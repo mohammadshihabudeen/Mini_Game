@@ -17,7 +17,7 @@ const StartGameScreen = ({ onPickedNumber }) => {
     const confirmButtonHandler = () => {
         const chosenNumber = parseInt(enteredNumber);
         if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
-            Alert.alert('invalid number!'
+            Alert.alert('Invalid number..!'
                 , "entered value must be a number between 0 and 100",
                 [{ text: 'Okay', style: 'destructive', onPress: resetButtonHandler }]);
             return;

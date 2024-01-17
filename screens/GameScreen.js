@@ -34,7 +34,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
             (direction == "higher" && currentGuess > userNumber)
         ) {
             Alert.alert("Don't Lie!"
-                , "You know taht is wrong...",
+                , "You know that is wrong...!",
                 [{ text: 'Okay', style: 'cancel' }]);
             return;
         }
