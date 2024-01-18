@@ -10,6 +10,7 @@ import AppLoading from 'expo-app-loading'
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameOver,setGameOver] =useState(false);
+  const [roundsCount,setRoundCount] = useState(0);
 
 const [fontsLoaded]=  useFonts({
     'open-sans': require('./assets/fonts/OpenSans.ttf'),

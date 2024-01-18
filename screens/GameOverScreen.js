@@ -14,7 +14,13 @@ const GameOverScreen = ({onRestart}) => {
           resizeMode="cover"
           source={require("../assets/images/gameOver.jpg")}
         />
-      </View>
+      </View>     
+      <Text style={styles.summaryText}>
+        Your Phone needed
+        <Text style={styles.innerText}> X </Text>
+        rounds to geues the number
+        <Text style={styles.innerText}> Y </Text>
+      </Text>
       <PrimaryButton onPress={onRestart}>Start Again</PrimaryButton>
     </View>
   );
@@ -42,4 +48,17 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  summaryText : {
+    fontFamily: 'poppins-bold',
+    color: Colors.primary600,
+    fontSize: 20,
+    textAlign: 'center'
+
+
+  },
+  innerText: {
+    fontFamily: 'poppins-bold',
+    color: Colors.primary700,
+    fontSize: 24
+  }
 });
