@@ -1,5 +1,5 @@
 This is a simple game 
-In startting screen You have to enter a number
+In starting screen You have to enter a number
 ![Screenshot_1705692148](https://github.com/mohammadshihabudeen/Mini_Game/assets/116706130/5056d970-76dc-4132-93bb-43c457d61be5)
 It should be 1-99 number
 ![Screenshot_1705692211](https://github.com/mohammadshihabudeen/Mini_Game/assets/116706130/d1b4daa9-bd25-4dde-8de5-543fbd0c1c3b)
