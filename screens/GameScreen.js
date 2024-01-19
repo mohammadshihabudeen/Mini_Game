@@ -67,7 +67,6 @@ const GameScreen = ({ userNumber, onGameOver }) => {
                 </View>
             </View>
         </Card>
-        <InstructionText>Rounds</InstructionText>
         <View style={styles.listContainer}>
             <FlatList
                 data={rounds} //array of data
