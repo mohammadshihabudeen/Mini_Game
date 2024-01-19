@@ -8,7 +8,7 @@ return <Text style={styles.instructionText}>{children}</Text>
 
  const styles = StyleSheet.create ({
     instructionText: {
-        fontFamily: 'open-sans',
+        fontFamily: 'poppins-bold',
         fontSize: 30,
         color: Colors.secondary400,
     },

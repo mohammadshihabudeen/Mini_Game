@@ -4,7 +4,7 @@ import Title from "../components/Title";
 import Colors from "../constants/Colors";
 import PrimaryButton from "../components/PrimaryButton";
 
-const GameOverScreen = ({onRestart}) => {
+const GameOverScreen = ({onRestart,roundsCount,userNumber}) => {
   return (
     <View style={styles.container}>
       <Title>GAME OVER!</Title>
@@ -17,11 +17,11 @@ const GameOverScreen = ({onRestart}) => {
       </View>     
       <Text style={styles.summaryText}>
         Your Phone needed
-        <Text style={styles.innerText}> X </Text>
+        <Text style={styles.innerText}> {roundsCount} </Text>
         rounds to geues the number
-        <Text style={styles.innerText}> Y </Text>
+        <Text style={styles.innerText}> {userNumber} </Text>
       </Text>
-      <PrimaryButton onPress={onRestart}>Start Again</PrimaryButton>
+      <PrimaryButton onPress={onRestart}>Start New Game</PrimaryButton>
     </View>
   );
 };
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     fontFamily: 'poppins-bold',
     color: Colors.primary600,
     fontSize: 20,
-    textAlign: 'center'
-
+    textAlign: 'center',
+    marginVertical:12
 
   },
   innerText: {
