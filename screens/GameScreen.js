@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, Alert, FlatList } from "react-native";
+import {
+    Text,
+    useWindowDimensions,
+    View, StyleSheet, Button, Alert, FlatList
+} from "react-native";
 import Title from "../components/Title";
 import NumberContainer from "../components/NumberContainer";
 import PrimaryButton from "../components/PrimaryButton";
@@ -52,21 +56,45 @@ const GameScreen = ({ userNumber, onGameOver }) => {
             console.log(currentGuess)
             return [newRndNo, ...rounds]
         });
+
+
     }
 
-    return <View style={styles.gameScreenContainer}>
+    const { height, width } = useWindowDimensions();
+
+    let content = (
+        <>
+            <NumberContainer>{currentGuess}</NumberContainer>
+            <Card>
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}><Ionicons name="remove-circle-outline" size={24} color="white" /></PrimaryButton>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, "higher")}><Ionicons name="add-circle-outline" size={24} color="white" /></PrimaryButton>
+                    </View>
+                </View>
+            </Card>
+        </>);
+    if (height < 400) {
+        content = (
+            <>
+                <View style={styles.buttonsContainerWide}>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}><Ionicons name="remove-circle-outline" size={24} color="white" /></PrimaryButton>
+                    </View>
+                    <NumberContainer>{currentGuess}</NumberContainer>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, "higher")}><Ionicons name="add-circle-outline" size={24} color="white" /></PrimaryButton>
+                    </View>
+                </View>
+            </>);
+    }
+    const marginTopDistance = height < 400 ? 10 : 70;
+
+    return <View style={[styles.gameScreenContainer, { marginTop: marginTopDistance }]}>
         <Title>Oppponent's Guess</Title>
-        <NumberContainer>{currentGuess}</NumberContainer>
-        <Card>
-            <View style={styles.buttonsContainer}>
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}><Ionicons name="remove-circle-outline" size={24} color="white" /></PrimaryButton>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={nextGuessHandler.bind(this, "higher")}><Ionicons name="add-circle-outline" size={24} color="white" /></PrimaryButton>
-                </View>
-            </View>
-        </Card>
+        {content}
         <View style={styles.listContainer}>
             <FlatList
                 data={rounds} //array of data
@@ -76,7 +104,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
                     );
                 }}
                 keyExtractor={(item, index) => index.toString()}
- />
+            />
         </View>
 
     </View>
@@ -85,14 +113,21 @@ export default GameScreen;
 
 const styles = StyleSheet.create({
     gameScreenContainer: {
-        flex:1,
+        flex: 1,
         padding: 20,
         marginTop: 70,
+        alignItems: "center"
     },
     buttonsContainer: {
         margin: 20,
         flexDirection: "row",
         justifyContent: 'space-between'
+    },
+    buttonsContainerWide: {
+        margin: 20,
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        alignItems: "center"
     },
     buttonContainer: {
         flex: 1
@@ -102,4 +137,5 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 16,
     }
+    
 });
